@@ -303,7 +303,15 @@ We came up with the following themes:
 
 
 ### Chat
+The for design of the chat was that you can pin messgae in the chat and they will appear on the right side.
+
 <img width="1345" alt="Screenshot 2023-06-09 at 13 28 38" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/49308006-3df8-46c4-9cd3-dfa290a12728">
+
+So I started with the implemtation of the chat, with the correct design and functionality.
+Sadly for this sprint couldn't finish the part of the pinning of the messages.
+But on the bring side, after the review the product owner changed his mind and didn't want the pinning of the messages anymore.
+So that was not so bad that I didn't finish it.
+But for the following sprint we had to redesign the whole chat aspect of the project.
 
 ---
 
