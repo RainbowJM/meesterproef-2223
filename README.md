@@ -17,6 +17,11 @@
 - [Week 2](#week-2)
   - [API](#api-1)
   - [Chat](#chat-1)
+- [Week 3](#week-3)
+  - [API](#api-2)
+  - [Chat](#chat-2)
+  - [Service worker](#service-worker)
+  - [Design](#design-1)
 - [Feedback](#feedback)
   - [Feedback week 1](#feedback-week-1)
     - [Feedback design review - 31 mei 2023](#feedback-design-review---31-mei-2023)
@@ -24,9 +29,21 @@
     - [Feedback Sprint review - 2 juni 2023](#feedback-sprint-review---2-juni-2023)
     - [Retrospetive](#retrospetive)
   - [Feedback week 2](#feedback-week-2)
-    - [Feedback code review - 7 juni 2023](#feedback-code-review---7-juni-2023)
-    - [Feedback Sprint review - 9 juni 2023](#feedback-sprint-review---9-juni-2023)
+    - [Feedback Code Review - 7 juni 2023](#feedback-code-review---7-juni-2023)
+    - [Feedback Sprint Review - 9 juni 2023](#feedback-sprint-review---9-juni-2023)
     - [Retrospetive](#retrospetive-1)
+  - [Feedback Week 3](#feedback-week-3)
+    - [Feedback Code Review - 14 juni 2023](#feedback-code-review---14-juni-2023)
+    - [Feedback Sprint Review - 15 juni 2023](#feedback-sprint-review---15-juni-2023)
+    - [Feedback Design Review - 15 juni 2023](#feedback-design-review---15-juni-2023)
+    - [Retrospetive](#retrospetive-2)
+- [Course Applied](#course-applied)
+  - [CSS to the Rescue](#css-to-the-rescue)
+  - [Web App From Scratch](#web-app-from-scratch)
+  - [Browser Technologies](#browser-technologies)
+  - [Progressive Web Apps](#progressive-web-apps)
+  - [Human Centred Design](#human-centred-design)
+  - [Real Time Web](#real-time-web)
 
 ---
 ## Introduction
@@ -313,6 +330,435 @@ But on the bring side, after the review the product owner changed his mind and d
 So that was not so bad that I didn't finish it.
 But for the following sprint we had to redesign the whole chat aspect of the project.
 
+## Week 3
+### API
+The API was done but it was empty, it didnt had any data.
+At the code review we got feedback that we should add dummy data to the API.
+To start implementing teh fetch of the data in to our project.
+
+When I was adding dummy dat ato the database I realised that I had to change the structure of the database.
+So that is when I created teh new datamodel and implemented it in to the API.
+
+...(image of the datamodel)
+
+So now de project has actual data to work with.
+
+....(image of the data in project)
+
+### Chat
+For this sprint we had to redesign the chat. 
+We decided to go with reacties inset of chat, but still in real-time.
+
+...(image of the chat)
+
+```js
+require('dotenv').config()
+const express = require("express");
+const app = express();
+const http = require("http").createServer(app);
+const path = require("path");
+const io = require("socket.io")(http);
+const port = process.env.PORT || 6954;
+const bodyParser = require("body-parser");
+const { createClient } = require('@supabase/supabase-js');
+const supabase = createClient(
+    'https://yyufywjwwwmgfjmenluv.supabase.co',
+    `${process.env.SUPABASE_KEY}`);
+const historySize = 100;
+let history = [];
+
+app.set("view engine", "ejs");
+app.set("views", "./views");
+
+app.use(express.static(path.resolve("public")));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.get('/detailPage-1', (req, res) => {
+    res.render('detailPage-1',{
+    title: "Detail",
+  });
+});
+
+io.on("connection", (socket) => {
+  console.log("user connected");
+
+  socket.emit("history", history);
+
+  socket.on("message", (message) => {
+    // Add the message to the history.
+    while (history.length > historySize) {
+      // Remove the oldest message.
+      history.shift();
+    }
+    // Add the message to the history.
+    history.push(message);
+
+    // Emit the message to all connected users.
+    io.emit("message", {
+      message: message.message,
+      name: message.name,
+      id: socket.id,
+      time: message.time,
+    });
+  });
+
+  socket.on("disconnect", () => {
+    console.log(`user ${socket.id} disconnected`);
+  });
+});
+
+http.listen(port, () => {
+  console.log(`Example app listening on  http://localhost:${port}`);
+});
+```
+```js
+// ------------------ variables -------------------------------------------------------
+import {
+  messages,
+  submitMessage,
+  input,
+  tabs,
+  filterMenu,
+  themeFilterBtn,
+  themeSelect,
+  asideItems,
+  theMenuButton,
+} from "./modules/variables.js";
+import { toggleFilterMenu } from "./modules/filter.js";
+import { toggleMenu } from "./modules/navigationMenu.js";
+
+const socket = io();
+let last;
+
+
+// ------------------ logic -------------------------------------------------------
+if (submitMessage) {
+  submitMessage.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    // Get the current time.
+    const date = new Date().toLocaleString("nl-NL", {
+      weekday: "short",
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
+    if (input.value) {
+      // Emit the message to all connected users.
+      socket.emit("message", {
+        message: input.value,
+        // name has to be fetch from database
+        name: "Jane Doe",
+        time: date,
+      });
+
+      // Add the message to the chat.
+      add(input.value, 'Jane Doe', date, socket.id);
+
+      input.value = "";
+    }
+  });
+}
+// ------------------ sockets -------------------------------------------------------
+
+socket.on("message", (message) => {
+  if (message.id != socket.id) {
+    add(message.message, message.name, message.time, message.id);
+  }
+});
+
+socket.on("history", (history) => {
+  history.forEach((message) => {
+    add(message.message, message.name, message.time, message.id);
+  });
+});
+
+// ------------------ functions -------------------------------------------------------
+function add(message, name, time, id) {
+  messages.appendChild(
+    Object.assign(document.createElement("li"), {
+      innerHTML: `<section id='message'>
+      <img src="/images/bob.jpeg" alt="avatar" class="avatar">
+      <div class="message-name-time">
+      <p class="name">${name}</p> 
+      <span class="message">${message}</span>
+      <span class="time">${time}</span> 
+      </div>
+      </section>`,
+    })
+  );
+  // Scroll to the bottom of the chat.
+  messages.scrollTop = messages.scrollHeight;
+  last = id;
+}
+```
+```css
+#chat {
+  height: 20em;
+  position: relative;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  grid-column-start: 1;
+}
+
+#chat h2{
+text-align: center;
+}
+
+.chat-section {
+  overflow-y: scroll;
+  height: 67%;
+}
+
+form {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin: 0 1em 0.5em 1em;
+}
+
+form input[type="text"] {
+  font-family: Poppins, system-ui;
+  background: var(--light-grey);
+  border: none;
+  border-radius: 25px;
+  width: 90%;
+  padding: 15px 20px;
+}
+
+form button {
+  height: 50px;
+  width: 50px;
+  background: var(--blue);
+  border: none;
+  /* border: solid 2px var(--yellow); */
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+#chat li {
+  font-size: small;
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+#chat li #name {
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 8px;
+  background-color: var(--yellow);
+  display: none;
+}
+
+#chat li #message {
+  background: var(--light-grey);
+  border-radius: 25px;
+  width: 97%;
+  padding: 10px 25px;
+  height: 5em;
+  font-size: medium;
+  word-wrap: break-word;
+  margin: 0 10px 0 10px;
+  display: flex;
+}
+
+div.message-name-time{
+  display: flex;
+  flex-direction: column;
+}
+
+#chat li #message span::first-letter {
+  text-transform: uppercase;
+}
+
+#chat li.self #message {
+  background: var(--light-grey);
+  border-radius: 25px;
+  margin-left: auto;
+  /* border: 1.5px solid var(--yellow); */
+  margin: 0 10px 0 10px;
+}
+
+#chat li #message p {
+  word-break: break-word;
+  display: inline;
+  margin: 0;
+  text-align: start;
+  font-weight: bold;
+  font-size: medium;
+  background-color: var(--yellow);
+  width: fit-content;
+  padding: 0.05em;
+}
+
+#chat li #message .time {
+  font-size: smaller;
+  float: right;
+  color: grey;
+  font-style: italic;
+}
+
+#chat li.self #message .time {
+  color: grey;
+
+}
+
+img.avatar{
+  height: 4em;
+  width: 4em;
+  border-radius: 5em;
+  margin-right: 0.5em;
+}
+```
+### Service worker
+Started with adding the manifest.json and service worker.
+And also you can download the app to your homescreen.
+
+```json
+{
+    "theme_color": "#009ce0",
+    "background_color": "#f0f0eb",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
+    "manifest_version": 1,
+    "orientation": "portrait",
+    "name": "Strandeiland",
+    "short_name": "Strandeiland",
+    "icons": [
+        {
+            "src": "/images/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/icon-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
+```
+```js
+const cacheName = 'cache-v1';
+const runtimeCacheName = 'runtime-cache'
+const assets = [
+    '/',
+    '/css/style.css',
+    '/css/detail-page.css',
+    '/css/form.css',
+    '/css/global.css',
+    '/css/overview-page.css',
+    '/css/sent.css',
+    '/css/offline.css',
+    '/images/favicon.ico',
+    '/offline',
+];
+
+
+self.addEventListener('install', event => {
+    console.log('Installed service worker');
+
+    event.waitUntil(
+        caches.open(cacheName)
+            .then(cache => {
+                cache.addAll(assets)
+                    .then(() => self.skipWaiting());
+            })
+    );
+});
+
+self.addEventListener('activate', event => {
+    console.log('Activating service worker')
+    event.waitUntil(
+        caches.keys()
+            .then(names => {
+                return Promise.all(names
+                    .filter(name => name !== cacheName && name !== runtimeCacheName)
+                    .map(key => caches.delete(key)))
+            })
+    )
+});
+
+self.addEventListener('fetch', event => {
+    console.log('Fetch event: ', event.request.url);
+    if (isCoreGetRequest(event.request)) {
+        event.respondWith(
+            caches.open(cacheName)
+                .then(cache => cache.match(event.request.url))
+        );
+    } else if (isHtmlGetRequest(event.request)) {
+        event.respondWith(
+            caches.open(runtimeCacheName)
+                .then(cache => cache.match(event.request.url))
+                .then(response => response ? response : fetchAndCache(event.request, runtimeCacheName))
+                .catch(e => {
+                    return caches.open(cacheName)
+                        .then(cache => cache.match('/offline'))
+                })
+        );
+    }
+});
+
+function isCoreGetRequest(request) {
+    return request.method === 'GET' && assets.includes(getPathName(request.url));
+}
+
+function isHtmlGetRequest(request) {
+    return request.method === 'GET' && 
+    (request.headers.get('accept') !== null && request.headers.get('accept').indexOf('text/html') > -1);
+}
+
+function fetchAndCache(request, cacheName) {
+    return fetch(request)
+        .then(response => {
+            if (!response.ok) {
+                throw new TypeError('Bad response status');
+            }
+            const clone = response.clone();
+            caches.open(cacheName).then((cache) => cache.put(request, clone));
+            limitCacheSize(cacheName,5);
+            return response;
+        })
+}
+
+function getPathName(requestUrl) {
+    const url = new URL(requestUrl);
+    return url.pathname;
+}
+```
+
+### Design
+A few sprint back we got the feedback to add a page where you can see the details of the user.
+
+This sprint I made a mini design for it.
+...(pic of user detail page)
+
+Based on the feedback we got about the color palette, we adde more colors to use in our design.
+...(pic of color palette)
+
+We tested the colors with the accessibility testing tool, before we made the final decision.
+...(pic of accessibility testing tool)
+
 ---
 
 ## Feedback
@@ -370,7 +816,7 @@ I think we work well together as a group, and there is clear communication and d
 For a more detailed infomation about the daily stand-ups, sprint reviews and retrospectives you can go to the [wiki](https://github.com/RainbowJM/strandeiland/wiki/Daily-Stand-ups--&-Retrospective)
 
 ### Feedback week 2
-#### Feedback code review - 7 juni 2023
+#### Feedback Code Review - 7 juni 2023
 This was the first code review, we had to show our code to the other group and they had to give feedback on it. 
 I got some good feedback on my code, but also some things I could improve on.
 
@@ -384,7 +830,7 @@ That means that everey feature was in one branch, and that is not really good.
 And we were already working with issues, but we were not linking them in the project board.  
 When making pull request, so that was for sure a good thing to do.
 
-#### Feedback Sprint review - 9 juni 2023
+#### Feedback Sprint Review - 9 juni 2023
 - Making it clearer that the filter can expand
 - Search based on keyword
 - New design for detail page
@@ -401,7 +847,56 @@ I also worked on the chat, style it and made it work with the basic functionalit
 The pull request was a bit of a struggle, because I had to merge the branches and there was alot of merge conflict, cuz we were not working in modules yet.
 When we started working with modules all of that was fixed.
 There was lest merge conflict and the code was more readable.
+Added also service worker to the project, so that it can work offline.
 
 I think we work well together as a group, and there is clear communication and division of labor.
 
 For a more detailed infomation about the daily stand-ups, sprint reviews and retrospectives you can go to the [wiki](https://github.com/RainbowJM/strandeiland/wiki/Daily-Stand-ups--&-Retrospective)
+
+### Feedback Week 3
+#### Feedback Code Review - 14 juni 2023
+- The code is well structured and uncluttered
+- Splits up the app.js file into modules
+- Add dummy data to the database for the API
+  
+#### Feedback Sprint Review - 15 juni 2023
+- On the overview page change the order of sorting and filtering
+- Online views on the post, is it everyone who is online on the community page or are only users who are currently on the page.
+- Green circle (when user is online) is not clear enough
+
+#### Feedback Design Review - 15 juni 2023
+- For the form page need to pay attention to hierachy which components belong together
+- The input section for image can be changed to a pop up.
+- Pay attention to the hierarchy of the overview page
+- Change a catchy image for the banner on the overview page
+- Add animation to the sending of reactions
+- A catchy banner image that gives more context.
+- Playing more with the layout of the overview pages
+- Add more color to the color palette
+
+#### Retrospetive 
+That was all for the third Sprint of the project.
+This week I stared working with chnge the design of teh chat.
+And implementeing this in to the code.
+After the code review we had, I first finished the new chat in code and then started to add dummy data to the database.
+While doing this I changed the datamodel again.
+After that I did a design for the user detail page.
+
+I think we work well together as a group, and there is clear communication and division of labor.
+
+For a more detailed infomation about the daily stand-ups, sprint reviews and retrospectives you can go to the [wiki](https://github.com/RainbowJM/strandeiland/wiki/Daily-Stand-ups--&-Retrospective)
+
+---
+
+## Course Applied
+### CSS to the Rescue
+
+### Web App From Scratch
+
+### Browser Technologies
+
+### Progressive Web Apps
+
+### Human Centred Design
+
+### Real Time Web
