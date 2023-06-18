@@ -297,8 +297,13 @@ I started with the themes.
 For this one we had a section where both teams came together to discuss the themes that we wanted to add.
 
 We came up with the following themes:
+<img width="415" alt="Screenshot 2023-06-18 at 22 38 41" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/8830d2c6-e177-49c9-88f2-fc4087ad7040">
+
+<img width="372" alt="Screenshot 2023-06-14 at 18 45 51" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/a19ac15a-74aa-4e15-b330-5873c8a7e635">
+
 
 ### Chat
+<img width="1345" alt="Screenshot 2023-06-09 at 13 28 38" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/49308006-3df8-46c4-9cd3-dfa290a12728">
 
 ---
 
