@@ -14,12 +14,19 @@
   - [Design](#design)
   - [API](#api)
   - [Chat](#chat)
+- [Week 2](#week-2)
+  - [API](#api-1)
+  - [Chat](#chat-1)
 - [Feedback](#feedback)
   - [Feedback week 1](#feedback-week-1)
     - [Feedback design review - 31 mei 2023](#feedback-design-review---31-mei-2023)
     - [Feedback debriefing - 1 juni 2023](#feedback-debriefing---1-juni-2023)
     - [Feedback Sprint review - 2 juni 2023](#feedback-sprint-review---2-juni-2023)
     - [Retrospetive](#retrospetive)
+  - [Feedback week 2](#feedback-week-2)
+    - [Feedback code review - 7 juni 2023](#feedback-code-review---7-juni-2023)
+    - [Feedback Sprint review - 9 juni 2023](#feedback-sprint-review---9-juni-2023)
+    - [Retrospetive](#retrospetive-1)
 
 ---
 ## Introduction
@@ -272,11 +279,29 @@ function add(message, time, id, self) {
 }
 ```
 
-week 2
-
-I made The tables and tested if the API worked with Postman.
+## Week 2
+### API
+This week I finished the API.
+I made the tables and tested if the API worked with Postman.
 <img width="809" alt="Screenshot 2023-06-18 at 18 26 45" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/3839d93d-1276-47bf-b8b9-7c007738b420">
+
+So it was ready to be used in code. 
+That was again a new challenge for me. Cuz it it was to diffent teams which had two diffent ways of working.
+And when they had issues with implementing the API I had to help them.
+But this for sure was a good learning moment for me.
+I got to knwo better was of working with the API, new functionalities that I didn't know about.
+I explored more with supabase.
+
+Also I started to add dummy data to the API.
+I started with the themes.
+For this one we had a section where both teams came together to discuss the themes that we wanted to add.
+
+We came up with the following themes:
+
+### Chat
+
 ---
+
 ## Feedback
 ### Feedback week 1
 #### Feedback design review - 31 mei 2023
@@ -326,6 +351,43 @@ And this thime the API was a bit more complicated.
 But I learned a lot from it.
 Think what are the best name for each of the table and their relationships to each other. 
 Did a little bit of coding for the chat in the detail page.
+
+I think we work well together as a group, and there is clear communication and division of labor.
+
+For a more detailed infomation about the daily stand-ups, sprint reviews and retrospectives you can go to the [wiki](https://github.com/RainbowJM/strandeiland/wiki/Daily-Stand-ups--&-Retrospective)
+
+### Feedback week 2
+#### Feedback code review - 7 juni 2023
+This was the first code review, we had to show our code to the other group and they had to give feedback on it. 
+I got some good feedback on my code, but also some things I could improve on.
+
+- Feature branches
+- Create issues and link them in the project board
+- Using Github to keep a to do list
+- Break down Javascript and ejs templating and rewrite into modules
+
+We were already working with branches, but everyone had one branch where they were working in.
+That means that everey feature was in one branch, and that is not really good.
+And we were already working with issues, but we were not linking them in the project board.  
+When making pull request, so that was for sure a good thing to do.
+
+#### Feedback Sprint review - 9 juni 2023
+- Making it clearer that the filter can expand
+- Search based on keyword
+- New design for detail page
+- New design for the chat - more functionalities and change the name
+- Different ways to upload image in wish form
+- Change proposal to wish
+- Pull menu to be different and not on the side
+- The wish create butuon should have an activating call to action
+
+#### Retrospetive 
+That was all for the second Sprint of the project.
+This week I focused on finishing the API and the datamodel.
+I also worked on the chat, style it and made it work with the basic functionalities.
+The pull request was a bit of a struggle, because I had to merge the branches and there was alot of merge conflict, cuz we were not working in modules yet.
+When we started working with modules all of that was fixed.
+There was lest merge conflict and the code was more readable.
 
 I think we work well together as a group, and there is clear communication and division of labor.
 
