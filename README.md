@@ -1,7 +1,25 @@
-# Duurzaam, groen en sociaal Strandeiland
-Team repo: https://github.com/RainbowJM/strandeiland
+# Duurzaam, groen en sociaal Strandeiland <!-- omit in toc -->
+
+Team repo: https://github.com/RainbowJM/strandeiland <!-- omit in toc -->
 ---
-# Table of contents
+# Table of contents <!-- omit in toc -->
+  
+- [Introduction](#introduction)
+- [Duurzaam, groen en sociaal Strandeiland](#duurzaam-groen-en-sociaal-strandeiland)
+  - [User stories](#user-stories)
+  - [Briefing](#briefing)
+  - [The debriefing](#the-debriefing)
+- [Week 1](#week-1)
+  - [Brainstorm](#brainstorm)
+  - [Design](#design)
+  - [API](#api)
+  - [Chat](#chat)
+- [Feedback](#feedback)
+  - [Feedback week 1](#feedback-week-1)
+    - [Feedback design review - 31 mei 2023](#feedback-design-review---31-mei-2023)
+    - [Feedback debriefing - 1 juni 2023](#feedback-debriefing---1-juni-2023)
+    - [Feedback Sprint review - 2 juni 2023](#feedback-sprint-review---2-juni-2023)
+    - [Retrospetive](#retrospetive)
 
 ---
 ## Introduction
