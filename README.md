@@ -1,6 +1,6 @@
 # Duurzaam, groen en sociaal Strandeiland <!-- omit in toc -->
 
-Team repo: https://github.com/RainbowJM/strandeiland <!-- omit in toc -->
+[Team repo](https://github.com/RainbowJM/strandeiland) <!-- omit in toc -->
 ---
 # Table of contents <!-- omit in toc -->
   
