@@ -43,7 +43,8 @@ The user stories are written in Dutch. The user stories are written in the follo
 ### Briefing
 The briefing is the first meeting we had as group with Michel Vogler from CrossmarX. Before the briefing we made a mind map with all the information we already had about the project. You can find this mind map below.
 
-... (pic of the mind map)
+<img width="832" alt="Screenshot 2023-06-18 at 13 32 31" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/a8841440-5b8c-4e7b-9946-147c5e334fa5">
+
 Below are the questions we asked Michel Vogler:
 - Wat wil de opdrachtgever met deze opdracht?
 - Eigen repo op github of repo van het bedrijf zelf? (vanuit school moet github)
@@ -74,7 +75,7 @@ The kick-off presentation of the final project for this minor was given by the t
 We started with a brainstorm to get a better understanding of the project. 
 Based on that we made a MoSCoW list.
 
-... (pic of the MoSCoW list)
+<img width="833" alt="Screenshot 2023-06-18 at 13 34 55" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/97f33ad1-a6fb-457c-8f26-df40aaae0f0d">
 
 ### Design
 For this week we wanted a first version of the overview page, detail page make a wish form. 
@@ -85,13 +86,13 @@ So we started where everyone designed their idea's of options of how the page sh
 After that we brainstormed together to create a first version of the design by putting all the idea's together.
 
 The overview page:
-... (pic of the design)
+<img width="365" alt="Screenshot 2023-06-16 at 16 16 42" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/36b594a5-6d57-41d2-8a71-cd0fb8300ad8">
 
 The detail page:
-... (pic of the design)
+<img width="441" alt="Screenshot 2023-06-18 at 18 23 09" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/440d7fd7-11ba-4c6b-9294-d181be533f02">
 
 The make a wish form:
-... (pic of the design)
+<img width="308" alt="Screenshot 2023-06-16 at 16 19 28" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/185fc2b7-8038-48d5-84cc-ac759047b978">
 
 ### API
 In the project description it was mentioned that we had to use an API. 
@@ -104,15 +105,13 @@ I made the API in supabase. The step by step guide can be found in the blog that
 The process of naming everything took a while, because I wanted to make sure that everything was clear.
 So that everyone could understand what the API was doing. 
 And how it has to be used.
-... (pic of the naming)
+<img width="876" alt="Screenshot 2023-06-18 at 18 28 02" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/8f7cbef5-ee3f-4324-9fd5-571c40912b74">
 
-...(pic first version datamodel)
+<img width="514" alt="Screenshot 2023-06-18 at 18 28 27" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/68be055a-c4d5-43fc-b035-bf1282a0a7ae">
 
-...(pic second version datamodel)
+![image](https://github.com/RainbowJM/meesterproef-2223/assets/59873140/d290fc2e-a601-4a66-b3e7-417aa78563b9)
 
 The second version was the version that I went for in the end.
-I made The tables and tested if the API worked with Postman.
-... (pic of the postman)
 
 One thing about the API that I was not sure about was the authentication.
 So at the code review section I asked Justus(one if the teachers) about it.
@@ -272,6 +271,11 @@ function add(message, time, id, self) {
   last = id;
 }
 ```
+
+week 2
+
+I made The tables and tested if the API worked with Postman.
+<img width="809" alt="Screenshot 2023-06-18 at 18 26 45" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/3839d93d-1276-47bf-b8b9-7c007738b420">
 ---
 ## Feedback
 ### Feedback week 1
