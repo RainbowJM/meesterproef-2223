@@ -117,7 +117,11 @@ Based on that we made a MoSCoW list.
 For this week we wanted a first version of the overview page, detail page make a wish form. 
 So we started where everyone designed their idea's of options of how the page should look like.
 
-... (pic of the design)
+<img width="435" alt="Screenshot 2023-06-25 at 22 36 59" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/bfec2e36-d0d3-4446-9a0f-8d0839b6f4a8">
+
+<img width="471" alt="Screenshot 2023-06-25 at 22 37 09" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/51c3276c-0d4c-4bd6-9cde-417ec896cfba">
+
+<img width="421" alt="Screenshot 2023-06-25 at 22 36 46" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/23dfe4f3-a8ec-4290-aac9-cb9b329b1d58">
 
 After that we brainstormed together to create a first version of the design by putting all the idea's together.
 
@@ -351,17 +355,22 @@ To start implementing teh fetch of the data in to our project.
 When I was adding dummy dat ato the database I realised that I had to change the structure of the database.
 So that is when I created teh new datamodel and implemented it in to the API.
 
-...(image of the datamodel)
+![meesterproef (1)](https://github.com/RainbowJM/meesterproef-2223/assets/59873140/16c42c4e-5f92-4936-b395-f86dd3226835)
+
+<img width="453" alt="Screenshot 2023-06-22 at 21 41 01" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/f1a44fb4-67f9-46aa-a57f-78fac04a95e4">
+
+<img width="296" alt="Screenshot 2023-06-20 at 22 19 55" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/c59693c6-5a7e-4044-ae1c-928002df0b82">
 
 So now de project has actual data to work with.
 
-....(image of the data in project)
+<img width="1280" alt="Screenshot 2023-06-21 at 18 26 33" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/9d61a1bb-8abf-4132-9b27-4ccb09985305">
+
 
 ### Chat
 For this sprint we had to redesign the chat. 
 We decided to go with reacties inset of chat, but still in real-time.
 
-...(image of the chat)
+<img width="1352" alt="Screenshot 2023-06-18 at 23 23 53" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/3d9f9518-5ec3-47a2-a246-98b2068dd6a8">
 
 ```js
 require('dotenv').config()
@@ -763,13 +772,13 @@ function getPathName(requestUrl) {
 A few sprint back we got the feedback to add a page where you can see the details of the user.
 
 This sprint I made a mini design for it.
-...(pic of user detail page)
+<img width="622" alt="Screenshot 2023-06-25 at 22 52 59" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/80445970-b9b7-44f9-88c2-ff4e5701a452">
 
 Based on the feedback we got about the color palette, we adde more colors to use in our design.
-...(pic of color palette)
+<img width="131" alt="Screenshot 2023-06-25 at 22 53 10" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/370a5016-036b-4561-a830-eaf92dac9699">
 
 We tested the colors with the accessibility testing tool, before we made the final decision.
-...(pic of accessibility testing tool)
+<img width="480" alt="Screenshot 2023-06-25 at 22 54 06" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/e00b4ccb-8e99-4e06-b01d-d29bf82b1121">
 
 ## Week 4
 ### Modules
@@ -1141,7 +1150,7 @@ Otherwise I would crach everyones application.
 The product owner give the suggestion to add a user page detail if we had the time. I took this task up on me to design the page.
 I started with a small design in Figma. 
 I used the colors from the color palette and the font from the house style, also used the same icons as on the overview page. 
-...(pic of design)
+<img width="639" alt="Screenshot 2023-06-25 at 22 57 25" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/2ec52751-0bed-455e-aa60-3ed727ca2c81">
 
 ```js
 router.get("/user/:first_name", async (req, res) => {
@@ -1230,6 +1239,7 @@ router.get("/user/:first_name", async (req, res) => {
 });
 ```
 This is the router file that I created for the user detail page.
+
 
 ### Code refactor
 As team we took the time to refactor our code.
