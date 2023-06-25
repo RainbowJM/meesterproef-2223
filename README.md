@@ -1291,7 +1291,7 @@ Did a little bit of coding for the chat in the detail page.
 
 I think we work well together as a group, and there is clear communication and division of labor.
 
-For a more detailed infomation about the daily stand-ups, sprint reviews and retrospectives you can go to the [wiki](https://github.com/RainbowJM/strandeiland/wiki/Daily-Stand-ups--&-Retrospective)
+For a more detailed infomation about the daily stand-ups, sprint reviews and retrospectives you can go to the [wiki](https://github.com/RainbowJM/strandeiland/wiki/Daily-Stand-ups--&-Retrospective) & [project board](https://github.com/users/RainbowJM/projects/1)
 
 ### Feedback week 2
 #### Feedback Code Review - 7 juni 2023
@@ -1329,7 +1329,8 @@ Added also service worker to the project, so that it can work offline.
 
 I think we work well together as a group, and there is clear communication and division of labor.
 
-For a more detailed infomation about the daily stand-ups, sprint reviews and retrospectives you can go to the [wiki](https://github.com/RainbowJM/strandeiland/wiki/Daily-Stand-ups--&-Retrospective)
+For a more detailed infomation about the daily stand-ups, sprint reviews and retrospectives you can go to the [wiki](https://github.com/RainbowJM/strandeiland/wiki/Daily-Stand-ups--&-Retrospective) & [project board](https://github.com/users/RainbowJM/projects/1)
+
 
 ### Feedback Week 3
 #### Feedback Code Review - 14 juni 2023
@@ -1362,7 +1363,8 @@ After that I did a design for the user detail page.
 
 I think we work well together as a group, and there is clear communication and division of labor.
 
-For a more detailed infomation about the daily stand-ups, sprint reviews and retrospectives you can go to the [wiki](https://github.com/RainbowJM/strandeiland/wiki/Daily-Stand-ups--&-Retrospective)
+For a more detailed infomation about the daily stand-ups, sprint reviews and retrospectives you can go to the [wiki](https://github.com/RainbowJM/strandeiland/wiki/Daily-Stand-ups--&-Retrospective) & [project board](https://github.com/users/RainbowJM/projects/1)
+
 
 
 ### Feedback Week 4
@@ -1409,7 +1411,8 @@ Finally I have been walking through the application and fixed some bugs.
 
 I think we work well together as a group, and there is clear communication and division of labor.
 
-For a more detailed infomation about the daily stand-ups, sprint reviews and retrospectives you can go to the [wiki](https://github.com/RainbowJM/strandeiland/wiki/Daily-Stand-ups--&-Retrospective)
+For a more detailed infomation about the daily stand-ups, sprint reviews and retrospectives you can go to the [wiki](https://github.com/RainbowJM/strandeiland/wiki/Daily-Stand-ups--&-Retrospective) & [project board](https://github.com/users/RainbowJM/projects/1)
+
 
 ---
 
