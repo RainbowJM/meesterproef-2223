@@ -22,6 +22,11 @@
   - [Chat](#chat-2)
   - [Service worker](#service-worker)
   - [Design](#design-1)
+- [Week 4](#week-4)
+  - [Modules](#modules)
+  - [Database](#database)
+  - [User detail page](#user-detail-page)
+  - [Code refactor](#code-refactor)
 - [Feedback](#feedback)
   - [Feedback week 1](#feedback-week-1)
     - [Feedback design review - 31 mei 2023](#feedback-design-review---31-mei-2023)
@@ -37,8 +42,15 @@
     - [Feedback Sprint Review - 15 juni 2023](#feedback-sprint-review---15-juni-2023)
     - [Feedback Design Review - 15 juni 2023](#feedback-design-review---15-juni-2023)
     - [Retrospetive](#retrospetive-2)
+  - [Feedback Week 4](#feedback-week-4)
+    - [Feedback Code Review - 21 juni 2023](#feedback-code-review---21-juni-2023)
+    - [Feedback Design Review - 22 juni 2023](#feedback-design-review---22-juni-2023)
+    - [Feedback Sprint Review - 23 juni 2023](#feedback-sprint-review---23-juni-2023)
+    - [Retrospetive](#retrospetive-3)
 - [Course Applied](#course-applied)
   - [CSS to the Rescue](#css-to-the-rescue)
+    - [Learning objectives](#learning-objectives)
+    - [Explanation](#explanation)
   - [Web App From Scratch](#web-app-from-scratch)
   - [Browser Technologies](#browser-technologies)
   - [Progressive Web Apps](#progressive-web-apps)
@@ -759,6 +771,472 @@ Based on the feedback we got about the color palette, we adde more colors to use
 We tested the colors with the accessibility testing tool, before we made the final decision.
 ...(pic of accessibility testing tool)
 
+## Week 4
+### Modules
+In the code reviews a got the feedback from Joost to refactor `app.js` and `server.js` into modules.
+And I did that with `app.js` by using  `express router`
+
+```js
+require("dotenv").config();
+const express = require("express");
+const app = express();
+const { createClient } = require("@supabase/supabase-js");
+const supabase = createClient(
+  `${process.env.SUPABASE_URL}`,
+  `${process.env.SUPABASE_KEY}`
+);
+const _ = require("lodash");
+const router = express.Router();
+
+router.get("/", async (req, res) => {
+  const { data: themeData, themeError } = await supabase.from("theme").select();
+  const { data: themeSuggestions, themeSuggestionsError } = await supabase
+    .from("suggestion_theme")
+    .select();
+  const { data: suggestionsData, error: suggestionsError } = await supabase
+    .from("suggestion")
+    .select();
+  const { data: latestSuggestionsData, latestSuggestionsError } = await supabase
+    .from("suggestion")
+    .select()
+    .order("created_at", { ascending: false })
+    .limit(3);
+  const { count, error } = await supabase
+    .from("suggestion")
+    .select("*", { count: "exact", head: true });
+  const { data: residentSuggestionData, residentSuggestionError } =
+    await supabase.from("resident_suggestion").select();
+  const { data: residentData, residentError } = await supabase
+    .from("resident")
+    .select();
+
+  // Randomize the suggestionsData array
+  const shuffledSuggestionsData = _.shuffle(suggestionsData);
+
+  for (const suggestion of shuffledSuggestionsData) {
+    const relatedTheme = themeSuggestions.find(
+      (ts) => ts.suggestionId === suggestion.id
+    );
+
+    if (relatedTheme) {
+      const theme = themeData.find((t) => t.id === relatedTheme.themaId);
+
+      if (theme) {
+        suggestion.theme = theme;
+      }
+    }
+  }
+
+  for (const latestSuggestion of latestSuggestionsData) {
+    const latestRelatedTheme = themeSuggestions.find(
+      (ts) => ts.suggestionId === latestSuggestion.id
+    );
+
+    if (latestRelatedTheme) {
+      const theme = themeData.find((t) => t.id === latestRelatedTheme.themaId);
+
+      if (theme) {
+        latestSuggestion.theme = theme;
+      }
+    }
+  }
+
+  for (const latestSuggestion of latestSuggestionsData) {
+    for (const residentSuggestion of residentSuggestionData) {
+      if (latestSuggestion.id === residentSuggestion.suggestion_id) {
+        for (const resident of residentData) {
+          if (resident.id === residentSuggestion.resident_id) {
+            latestSuggestion.amb = resident;
+          }
+        }
+      }
+    }
+  }
+
+  if (
+    themeError ||
+    suggestionsError ||
+    latestSuggestionsError ||
+    themeSuggestionsError
+  ) {
+    console.error(
+      "Error:",
+      themeError ||
+        suggestionsError ||
+        latestSuggestionsError ||
+        themeSuggestionsError
+    );
+  } else {
+    res.render("index", {
+      title: "Wensen",
+      themes: themeData,
+      suggestions: shuffledSuggestionsData,
+      latestSuggestions: latestSuggestionsData,
+      totalSuggestions: count,
+    });
+  }
+});
+
+router.get("/wens/:id", async (req, res) => {
+  const suggestionId = req.params.id;
+  const { data: suggestionData, error } = await supabase
+    .from("suggestion")
+    .select()
+    .eq("id", suggestionId)
+    .single();
+
+  let defaultTime = suggestionData.created_at;
+  let date = new Date(defaultTime).toLocaleDateString("nl-NL", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  const { data: residentSuggestionData, residentSuggestionError } =
+    await supabase.from("resident_suggestion").select();
+
+  const { data: residentData, residentError } = await supabase
+    .from("resident")
+    .select();
+
+  const { data: themeData, themeError } = await supabase.from("theme").select();
+
+  const { data: suggestionThemeData, suggestionThemeError } = await supabase
+    .from("suggestion_theme")
+    .select();
+
+  let listSuggestions = [];
+  let theme = [];
+  for (const residentSuggestion of residentSuggestionData) {
+    for (const resident of residentData) {
+      if (residentSuggestion.resident_id === resident.id) {
+        if (residentSuggestion.suggestion_id === suggestionData.id) {
+          suggestionData.resident = resident;
+          listSuggestions.push(suggestionData);
+        }
+      }
+    }
+  }
+
+  for (const suggestion of listSuggestions) {
+    let relatedThemes = [];
+    for (const ts of suggestionThemeData) {
+      if (ts.suggestionId === suggestion.id) {
+        relatedThemes.push(ts);
+      }
+    }
+    for (const relatedTheme of relatedThemes) {
+      for (const t of themeData) {
+        if (t.id === relatedTheme.themaId) {
+          theme.push(t);
+        }
+      }
+    }
+  }
+
+  if (
+    error ||
+    residentSuggestionError ||
+    residentError ||
+    themeError ||
+    suggestionThemeError
+  ) {
+    console.error(
+      "Error fetching suggestion:",
+      error ||
+        residentSuggestionError ||
+        residentError ||
+        themeError ||
+        suggestionThemeError
+    );
+  } else {
+    res.render("suggestion", {
+      title: "Wens",
+      suggestion: suggestionData,
+      time: date,
+      themes: theme,
+    });
+  }
+});
+
+router.get("/user/:first_name", async (req, res) => {
+  const firstName = req.params.first_name;
+  const { data: userData, error: userError } = await supabase
+    .from("resident")
+    .select()
+    .eq("first_name", firstName)
+    .single();
+
+  let defaultTime = userData.created_at;
+  let date = new Date(defaultTime).toLocaleDateString("nl-NL", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  const { data: residentSuggestionData, residentSuggestionError } =
+    await supabase.from("resident_suggestion").select();
+
+  const { data: suggestionData, suggestionError } = await supabase
+    .from("suggestion")
+    .select();
+
+  let int = 0;
+  let listSuggestions = [];
+  let theme = [];
+  for (const suggestion of suggestionData) {
+    for (const residentSuggestion of residentSuggestionData) {
+      if (suggestion.id === residentSuggestion.suggestion_id) {
+        if (userData.id === residentSuggestion.resident_id) {
+          int++;
+          listSuggestions.push(suggestion);
+        }
+      }
+    }
+  }
+
+  const { data: themeData, themeError } = await supabase.from("theme").select();
+
+  const { data: suggestionThemeData, suggestionThemeError } = await supabase
+    .from("suggestion_theme")
+    .select();
+  for (const suggestion of listSuggestions) {
+    let relatedThemes = [];
+    for (const ts of suggestionThemeData) {
+      if (ts.suggestionId === suggestion.id) {
+        relatedThemes.push(ts);
+      }
+    }
+    for (const relatedTheme of relatedThemes) {
+      for (const t of themeData) {
+        if (t.id === relatedTheme.themaId) {
+          theme.push(t);
+        }
+      }
+    }
+  }
+  if (
+    userError ||
+    residentSuggestionError ||
+    suggestionError ||
+    themeError ||
+    suggestionThemeError
+  ) {
+    console.error(
+      "Error:",
+      userError ||
+        residentSuggestionError ||
+        suggestionError ||
+        themeError ||
+        suggestionThemeError
+    );
+  } else {
+    res.render("user", {
+      title: "Gebruiker",
+      user: userData,
+      time: date,
+      amount: int,
+      suggestions: listSuggestions,
+      themes: theme,
+    });
+  }
+});
+
+router.post("/form", async (req, res) => {
+  try {
+    const { data, error } = await supabase
+      .from("suggestion")
+      .insert([
+        {
+          title: req.body.title,
+          description: req.body.description,
+          image: req.body.imageLink,
+        },
+      ])
+      .select();
+
+    const insertId = data.length > 0 ? data[0].id : null;
+    if (error || !insertId) {
+      throw error;
+    }
+
+    console.log([parseInt(req.body.theme)]);
+    const themes = req.body.theme;
+
+    const themeInsertPromises = themes.map(async (theme) => {
+      const { data: themeData, error: themeError } = await supabase
+        .from("theme")
+        .select("id")
+        .eq("id", theme)
+        .single();
+      if (themeError) {
+        throw themeError;
+      }
+
+      const { error: suggestionThemeError } = await supabase
+        .from("suggestion_theme")
+        .insert([
+          {
+            suggestionId: insertId,
+            themaId: themeData.id,
+          },
+        ]);
+      if (suggestionThemeError) {
+        throw suggestionThemeError;
+      }
+    });
+
+    await Promise.all(themeInsertPromises);
+    res.render("sent", {
+      title: "sent",
+    });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "Het toevoegen van de wens ging fout, probeer opnieuw" });
+    console.log(error);
+    return;
+  }
+});
+
+router.get("/sent", (req, res) => {
+  res.render("sent", {
+    title: "Bevesting",
+  });
+});
+
+router.get("/form", (req, res) => {
+  res.render("form", {
+    title: "Formulier",
+  });
+});
+
+router.get("/offline", (req, res) => {
+  res.render("offline", {
+    title: "Offline",
+  });
+});
+
+module.exports = router;
+```
+This is the router file that I created that contains all the routes that we needed for the application.
+It gets called in the `app.js` file as follows:
+
+```js
+const router = require('./routes/route')
+app.use('/', router);
+```
+
+### Database
+While we were fetching data from the database, I noticed that the database was missing some data. 
+Each time that I noticed that something was missing, I added it to the database.
+And also since both team was testeing of the data they were fetch and sending to the database was correct, I had to constantly clear the database. 
+Otherwise I would crach everyones application.
+
+### User detail page
+The product owner give the suggestion to add a user page detail if we had the time. I took this task up on me to design the page.
+I started with a small design in Figma. 
+I used the colors from the color palette and the font from the house style, also used the same icons as on the overview page. 
+...(pic of design)
+
+```js
+router.get("/user/:first_name", async (req, res) => {
+  const firstName = req.params.first_name;
+  const { data: userData, error: userError } = await supabase
+    .from("resident")
+    .select()
+    .eq("first_name", firstName)
+    .single();
+
+  let defaultTime = userData.created_at;
+  let date = new Date(defaultTime).toLocaleDateString("nl-NL", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  const { data: residentSuggestionData, residentSuggestionError } =
+    await supabase.from("resident_suggestion").select();
+
+  const { data: suggestionData, suggestionError } = await supabase
+    .from("suggestion")
+    .select();
+
+  let int = 0;
+  let listSuggestions = [];
+  let theme = [];
+  for (const suggestion of suggestionData) {
+    for (const residentSuggestion of residentSuggestionData) {
+      if (suggestion.id === residentSuggestion.suggestion_id) {
+        if (userData.id === residentSuggestion.resident_id) {
+          int++;
+          listSuggestions.push(suggestion);
+        }
+      }
+    }
+  }
+
+  const { data: themeData, themeError } = await supabase.from("theme").select();
+
+  const { data: suggestionThemeData, suggestionThemeError } = await supabase
+    .from("suggestion_theme")
+    .select();
+  for (const suggestion of listSuggestions) {
+    let relatedThemes = [];
+    for (const ts of suggestionThemeData) {
+      if (ts.suggestionId === suggestion.id) {
+        relatedThemes.push(ts);
+      }
+    }
+    for (const relatedTheme of relatedThemes) {
+      for (const t of themeData) {
+        if (t.id === relatedTheme.themaId) {
+          theme.push(t);
+        }
+      }
+    }
+  }
+  if (
+    userError ||
+    residentSuggestionError ||
+    suggestionError ||
+    themeError ||
+    suggestionThemeError
+  ) {
+    console.error(
+      "Error:",
+      userError ||
+        residentSuggestionError ||
+        suggestionError ||
+        themeError ||
+        suggestionThemeError
+    );
+  } else {
+    res.render("user", {
+      title: "Gebruiker",
+      user: userData,
+      time: date,
+      amount: int,
+      suggestions: listSuggestions,
+      themes: theme,
+    });
+  }
+});
+```
+This is the router file that I created for the user detail page.
+
+### Code refactor
+As team we took the time to refactor our code.
+We focus on cleaning up our code, removing all the console logs and comments that we didn't need anymore.
+Check if we stayed consistent with our naming conventions.
+and renaming some of the functions to make it more clear what they do.
+
 ---
 
 ## Feedback
@@ -886,10 +1364,66 @@ I think we work well together as a group, and there is clear communication and d
 
 For a more detailed infomation about the daily stand-ups, sprint reviews and retrospectives you can go to the [wiki](https://github.com/RainbowJM/strandeiland/wiki/Daily-Stand-ups--&-Retrospective)
 
+
+### Feedback Week 4
+#### Feedback Code Review - 21 juni 2023
+- The code is well structured and uncluttered
+- Good file names
+- Remove console.log
+- remove not needed comments
+- Split `app.js` into multiple files
+- Do performance test
+- Do accessibility test
+- Prioritize tasks
+- Check for the correct head structuring in html
+- Check if you are using the correct html elements
+
+#### Feedback Design Review - 22 juni 2023
+- Let the wish button rotate a bit when hovered
+- Try the select menu 
+- Try using grid auto fit 
+  
+#### Feedback Sprint Review - 23 juni 2023
+- Show what the page looks like when sorted by themes
+- Change the call button action 
+- Show a data visualization which themes are used the most
+- Filter sorting should be underneath the most recent wishes
+- Enforce max 3 themes in the form
+- See if we can flip the image or make it a bit higher
+- Visualization how you can see which themes are most common
+
+#### Retrospetive
+Out of all the other weeks this was the week that we worked extra very hard on the project.
+we wanted to have the majority of the functionalities done by the end of this week.
+And we achieved that.
+I worked on the design of the user detail page and then set it in to the code.
+When the code design was one, I worked on fetching data from the database and displaying it on the page.
+Also help Keisha with the filter and the sorting of the wishes. But sadly we could make it work.
+During the code review we asked about it, we good as feedback that we should try to visualize the filter and sorting.
+And skip the functionality for now.
+So we did that, and it looks really good.
+During this project I was/am the "pull request master" so I had to merge all the branches and fix the merge conflicts.
+On the final day before the sprint review, we got a major merge conflict, that took me hours to fix.
+Had to make hard descisions, but in the end it worked out.
+Finally I have been walking through the application and fixed some bugs.
+
+I think we work well together as a group, and there is clear communication and division of labor.
+
+For a more detailed infomation about the daily stand-ups, sprint reviews and retrospectives you can go to the [wiki](https://github.com/RainbowJM/strandeiland/wiki/Daily-Stand-ups--&-Retrospective)
+
 ---
 
 ## Course Applied
 ### CSS to the Rescue
+#### Learning objectives 
+These are the leraning objectives for the course CSS to the Rescue (in Dutch):
+- Je kunt experimenteren met (voor jou) nieuwe css-technieken - om de mogelijkheden op waarde te schatten en te gebruiken waar gepast.
+- Je hebt begrip van de volle kracht en mogelijkheden van CSS. Je laat zien dat CSS meer kan dan allen web pages 'stylen'.
+- Je hebt begrip van de interactie-technieken van CSS (en HTML). De UX is aangenaam bruikbaar binnen de gekozen context(en).
+- Je hebt begrip hoe progressive enhancement elegant toe te passen. Je laat zien dat je cascade, inheritance en specificity kunt toepassen.
+  
+#### Explanation
+In this project you can defintely see that I have experimented with new CSS techniques. When I started with this minor I only new `div` and only used `id` and `class` as selector. BUt now I now more about the CSS selector and the possibility. This meesterproef project is defintily a good example. Check week 2 en week 4 for more information.
 
 ### Web App From Scratch
 
