@@ -56,6 +56,7 @@
   - [Progressive Web Apps](#progressive-web-apps)
   - [Human Centred Design](#human-centred-design)
   - [Real Time Web](#real-time-web)
+- [Sources](#sources)
 
 ---
 ## Introduction
@@ -1447,3 +1448,36 @@ In this project you can defintely see that I have experimented with new CSS tech
 ### Human Centred Design
 
 ### Real Time Web
+
+---
+## Sources
+- How do I fetch Multiple Specific Rows in Supabase JS? (n.d.). Stack Overflow. https://stackoverflow.com/questions/75717077/how-do-i-fetch-multiple-specific-rows-in-supabase-js
+- How to get “COUNT(*)” in Supabase. (n.d.). Stack Overflow. https://stackoverflow.com/questions/65612167/how-to-get-count-in-supabase
+- Vanilla JavaScript search - how to show results only when button is clicked? (n.d.). Stack Overflow. https://stackoverflow.com/questions/69117827/vanilla-javascript-search-how-to-show-results-only-when-button-is-clicked
+- How to get the selected radio button’s value? (n.d.). Stack Overflow. https://stackoverflow.com/questions/9618504/how-to-get-the-selected-radio-button-s-value
+- How do I get Date(); to show the time in JavaScript right? (n.d.). Stack Overflow. https://stackoverflow.com/questions/46754181/how-do-i-get-date-to-show-the-time-in-javascript-right
+- How to make “fit-content” work across browsers? (n.d.). Stack Overflow. https://stackoverflow.com/questions/54740433/how-to-make-fit-content-work-across-browsers
+- Rotate Parent but not child on hover. (n.d.). Stack Overflow. https://stackoverflow.com/questions/48651589/rotate-parent-but-not-child-on-hover
+- EJS - pass data to partial view and use it in every view/page. How can i do that? (n.d.). Stack Overflow. https://stackoverflow.com/questions/60551806/ejs-pass-data-to-partial-view-and-use-it-in-every-view-page-how-can-i-do-that
+- iterating over JSON object in ejs partial. (n.d.). Stack Overflow. https://stackoverflow.com/questions/37279927/iterating-over-json-object-in-ejs-partial
+- Fading out text on overflow with css if the text is bigger than allowed. (n.d.). Stack Overflow. https://stackoverflow.com/questions/22808040/fading-out-text-on-overflow-with-css-if-the-text-is-bigger-than-allowed
+- ::-webkit-scrollbar - CSS: Cascading Style Sheets | MDN. (2023, April 1). https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-scrollbar
+- Advanced Form Control Styling With Selectmenu And Anchoring API — Smashing Magazine. (2023, June 1). Smashing Magazine. https://www.smashingmagazine.com/2023/06/advanced-form-control-styling-selectmenu-anchoring-api/
+- Lazy loading - Web performance | MDN. (2023, March 30). https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading
+- Brosset, P. (2022, October 25). The selectmenu HTML Tag | CSS-Tricks. CSS-Tricks. https://css-tricks.com/the-selectmenu-element/
+- Fetch data | Supabase. (n.d.). https://supabase.com/docs/reference/javascript/crawlers/select
+- Isheanesu. (2022). How To SELECT, COUNT and JOIN Supabase Data. DEV Community. https://dev.to/thisisisheanesu/how-to-select-count-and-join-supabase-data-3ihk
+- House, C. (2023). A Complete Guide to CSS Grid | CSS-Tricks. CSS-Tricks. https://css-tricks.com/snippets/css/complete-guide-grid/
+- Onyejiaku, T. K. (2023). What is req.query in Express.js? Educative: Interactive Courses for Software Developers. https://www.educative.io/answers/what-is-reqquery-in-expressjs
+- Hallo IJburg - houdt je verbonden. (n.d.). halloijburg.nl. https://halloijburg.nl/
+- Hallo Strandeiland. (n.d.). hallostrandeiland.nl. https://hallostrandeiland.nl/
+- Supabase Javascript Client - Using filters. (n.d.). https://supabase.com/docs/reference/javascript/using-filters
+- How To Create Vertical Tabs. (n.d.). https://www.w3schools.com/howto/howto_js_vertical_tabs.asp
+- how to use font awesome icons in HTML. (n.d.). Stack Overflow. https://stackoverflow.com/questions/71146319/how-to-use-font-awesome-icons-in-html
+- CSS scroll snap - CSS: Cascading Style Sheets | MDN. (2023, May 29). https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_scroll_snap
+- Kohler, M. (2020, June 18). Practical CSS Scroll Snapping | CSS-Tricks. CSS-Tricks. https://css-tricks.com/practical-css-scroll-snapping/
+- Using Each Loop in EJS Template and Express JS. (2021, July 8). The freeCodeCamp Forum. https://forum.freecodecamp.org/t/using-each-loop-in-ejs-template-and-express-js/468398/2
+- suggestion | Meesterproef | Strandeiland | Supabase. (n.d.). https://supabase.com/dashboard/project/yyufywjwwwmgfjmenluv/editor/28660?sort=id%3Adesc
+- API | Supabase. (n.d.). https://supabase.com/dashboard/project/yyufywjwwwmgfjmenluv/api
+- Magdalena, J. (2023, June 16). Unleashing the Power of Supabase: Your Ultimate Guide to Modern Database Development With Express. Medium. https://medium.com/@jevona.magdalena/unleashing-the-power-of-supabase-your-ultimate-guide-to-modern-database-development-with-express-872dbb3b6e
+- Service Worker API - Web APIs | MDN. (2023, April 13). https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API
