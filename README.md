@@ -47,10 +47,9 @@
     - [Feedback Design Review - 22 juni 2023](#feedback-design-review---22-juni-2023)
     - [Feedback Sprint Review - 23 juni 2023](#feedback-sprint-review---23-juni-2023)
     - [Retrospetive](#retrospetive-3)
+- [General retrospective](#general-retrospective)
 - [Course Applied](#course-applied)
   - [CSS to the Rescue](#css-to-the-rescue)
-    - [Learning objectives](#learning-objectives)
-    - [Explanation](#explanation)
   - [Web App From Scratch](#web-app-from-scratch)
   - [Browser Technologies](#browser-technologies)
   - [Progressive Web Apps](#progressive-web-apps)
@@ -1376,8 +1375,6 @@ I think we work well together as a group, and there is clear communication and d
 
 For a more detailed infomation about the daily stand-ups, sprint reviews and retrospectives you can go to the [wiki](https://github.com/RainbowJM/strandeiland/wiki/Daily-Stand-ups--&-Retrospective) & [project board](https://github.com/users/RainbowJM/projects/1)
 
-
-
 ### Feedback Week 4
 #### Feedback Code Review - 21 juni 2023
 - The code is well structured and uncluttered
@@ -1424,30 +1421,74 @@ I think we work well together as a group, and there is clear communication and d
 
 For a more detailed infomation about the daily stand-ups, sprint reviews and retrospectives you can go to the [wiki](https://github.com/RainbowJM/strandeiland/wiki/Daily-Stand-ups--&-Retrospective) & [project board](https://github.com/users/RainbowJM/projects/1)
 
+---
+## General retrospective
+
 
 ---
 
 ## Course Applied
 ### CSS to the Rescue
-#### Learning objectives 
-These are the leraning objectives for the course CSS to the Rescue (in Dutch):
-- Je kunt experimenteren met (voor jou) nieuwe css-technieken - om de mogelijkheden op waarde te schatten en te gebruiken waar gepast.
-- Je hebt begrip van de volle kracht en mogelijkheden van CSS. Je laat zien dat CSS meer kan dan allen web pages 'stylen'.
-- Je hebt begrip van de interactie-technieken van CSS (en HTML). De UX is aangenaam bruikbaar binnen de gekozen context(en).
-- Je hebt begrip hoe progressive enhancement elegant toe te passen. Je laat zien dat je cascade, inheritance en specificity kunt toepassen.
-  
-#### Explanation
-In this project you can defintely see that I have experimented with new CSS techniques. When I started with this minor I only new `div` and only used `id` and `class` as selector. BUt now I now more about the CSS selector and the possibility. This meesterproef project is defintily a good example. Check week 2 en week 4 for more information.
+In this project you can defintely see that I have experimented with new CSS techniques. When I started with this minor I only new `div` and only used `id` and `class` as selector. But now I now more about the CSS selector and the possibility. This meesterproef project is defintily a good example. Check week 2 en week 4 for more information.
+I experiment with CSS.  
+I worked with new techniques like grid, :has() selectors and css animations.
+It was for sure a challenge to work with grid, but I made it work.
+I also used the :has() selector, which is not supported by all browsers. But I used it in a way that it is not a problem if it is not supported, by adding a fall back.
 
 ### Web App From Scratch
+For this application to get the data to display on the pages, I used the API that was made for this project. [Strandeiland API](https://yyufywjwwwmgfjmenluv.supabase.co/rest/v1/)
+
+I used Supabase to retrieve data and display it on the page. 
+From the database I retrieved the first name, last name, description, date and image.
+
+In terms of code structure, I worked with modules. We split our `app.js` file into a `route.js` file and `script.js` file has each functionality a separate file. 
+Our CSS and HTML was also done in components. 
+For the html we used a template engine called ejs. 
+Repetitive HTML code was placed in a partials file and called in the ejs file. 
+For the css, each page got it's own css file.
+
+I wanted to make the `script.js` smaller, but due to time this was not possible.
 
 ### Browser Technologies
+One thing we learned in browser technologies is that we need to make sure that our application works as well as possible on all kinds of devices.
+And under any conditions. 
+So the application should be accessibility for everyone. 
+So I started with testing my part, the user detail page, see if it works on all kinds of devices. 
+Furthermore, we did a color contrast test to see if there is enough color contrast between the foreground and background. 
+
+I alsot worked a bit on feature detection, for each function I wrote I put in an `if()` statements. 
+If the feature does not exist then the code is not executed.
+
+The basic functionality of the wish summary page is to write a semantic html structure. Writing good html can make it easier for people who use screen readers to operate the page. 
+A progressive enhancement is formatting the HTML document with css. 
+The page becomes more beautiful and clearer for the user.
 
 ### Progressive Web Apps
+We used a template engine called ejs. 
+In Progressive Web App was the first time that I worked eith the template engine ejs and it was also the first time that I worked with express.
+
+In Web App From Scratch we learned about working in modules and in Progressive Web Apps we went deeper in to it. 
+
+I applied what we learned of service worker in this project, when I applied it we started noticing that as soon as you change pages the service worker will go to offline mode. 
+
+The offline mode is for when you don't have internet, but in our case we had internet but yet it was going to the offline page.
+I was very challenging to figure out how to fix this.
+
+.... add how I fixed it and what I learned
+
 
 ### Human Centred Design
+The idea of Human Centres Design is tha you will create a product that is based on the user goals. 
+And that you will test the product with the user each time.
+This is something that I have definitely been doing the last five weeks.
+At the end of each iteration we tested the prototype with the product owner, who in this case is the client.
+
+At the end of each iteration the team and I had a meeting with the client. 
+Where we showed the prototype and the client gave feedback.
+Based on the feedback we made a new prototype for the next iteration.
 
 ### Real Time Web
+I implemetend a real-time feature in the application. 
 
 ---
 ## Sources
