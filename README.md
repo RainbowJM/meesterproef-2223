@@ -1298,6 +1298,10 @@ for (const suggestion of listSuggestions) {
   }
 ```
 
+<img width="1317" alt="Screenshot 2023-06-23 at 21 16 33" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/84b43b84-c0b0-4a3f-9d36-eacdf5753acd">
+
+<img width="1318" alt="Screenshot 2023-06-23 at 21 16 45" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/8f0e3fb8-e5e0-4bf3-a295-d3baf3b25dee">
+
 ### Code refactor
 Before we hand in th project/ the final product, we took the time to refactor our code again.
 This time we focus on cleaning up our code, removing all the console logs and comments that we didn't need anymore.
