@@ -31,7 +31,6 @@
   - [Fetching data](#fetching-data)
   - [Code refactor](#code-refactor-1)
   - [Testing](#testing)
-  - [LightHouse testing](#lighthouse-testing)
 - [Feedback](#feedback)
   - [Feedback week 1](#feedback-week-1)
     - [Feedback design review - 31 mei 2023](#feedback-design-review---31-mei-2023)
@@ -1276,15 +1275,47 @@ And some suggestion has more then one theme
 
 <img width="1263" alt="Screenshot 2023-06-23 at 20 24 15" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/d27f3eb2-fb04-42fb-8ec1-b2ed96b56101">
 
+As you can see in the images above, the suggestion has more then one theme.
+Now that I changed the code to the following, it will show all the themes that are related to the suggestion.
+
+```js
+for (const suggestion of listSuggestions) {
+    let relatedThemes = [];
+    for (const ts of suggestionThemeData) {
+      if (ts.suggestionId === suggestion.id) {
+        relatedThemes.push(ts);
+      }
+    }
+    label = []
+    for (const relatedTheme of relatedThemes) {
+      for (const theme of themeData) {
+        if (relatedTheme.themaId === theme.id) {
+          label.push(theme.label);
+        }
+      }
+    }
+    suggestion.theme = label;
+  }
+```
 
 ### Code refactor
+Before we hand in th project/ the final product, we took the time to refactor our code again.
+This time we focus on cleaning up our code, removing all the console logs and comments that we didn't need anymore.
+Check if we stayed consistent with our naming conventions.
+And renaming some of the functions to make it more clear what they do.
+
+This is all to ensure that what we hand in is the best version of our product.
+And that it is readable for the following team that will work on this project.
 
 ### Testing
 This week I focus on testing the whole applicattion, note where there were bug or things that we could so better.
 
+During the testing I found some bugs and things that we could do better. 
+We immediately give everyone a task based on the bugs that we found.
 
+And refactor where needed to be refactored.
+At the same time fixed the bugs that we found.
 
-### LightHouse testing
 ---
 
 ## Feedback
