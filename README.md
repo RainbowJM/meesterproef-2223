@@ -1269,6 +1269,13 @@ and renaming some of the functions to make it more clear what they do.
 ### Fetching data
 For some final touch I fetch the theme for each suggestion and added it to the detailpage and the user detail page.
 
+in the previous iteration I did fetch the theme for each suggestion, but obly one theme. 
+And some suggestion has more then one theme
+
+<img width="1276" alt="Screenshot 2023-06-23 at 20 05 55" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/2dda3a9f-cd7a-42ed-a400-c8185a44dfa7">
+
+<img width="1263" alt="Screenshot 2023-06-23 at 20 24 15" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/d27f3eb2-fb04-42fb-8ec1-b2ed96b56101">
+
 
 ### Code refactor
 
