@@ -158,6 +158,7 @@ I made the API in supabase. The step by step guide can be found in the blog that
 The process of naming everything took a while, because I wanted to make sure that everything was clear.
 So that everyone could understand what the API was doing. 
 And how it has to be used.
+
 <img width="876" alt="Screenshot 2023-06-18 at 18 28 02" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/8f7cbef5-ee3f-4324-9fd5-571c40912b74">
 
 <img width="514" alt="Screenshot 2023-06-18 at 18 28 27" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/68be055a-c4d5-43fc-b035-bf1282a0a7ae">
@@ -329,6 +330,7 @@ function add(message, time, id, self) {
 ### API
 This week I finished the API.
 I made the tables and tested if the API worked with Postman.
+
 <img width="809" alt="Screenshot 2023-06-18 at 18 26 45" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/3839d93d-1276-47bf-b8b9-7c007738b420">
 
 So it was ready to be used in code. 
@@ -347,7 +349,6 @@ We came up with the following themes:
 <img width="415" alt="Screenshot 2023-06-18 at 22 38 41" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/8830d2c6-e177-49c9-88f2-fc4087ad7040">
 
 <img width="372" alt="Screenshot 2023-06-14 at 18 45 51" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/a19ac15a-74aa-4e15-b330-5873c8a7e635">
-
 
 ### Chat
 The for design of the chat was that you can pin messgae in the chat and they will appear on the right side.
@@ -378,7 +379,6 @@ So that is when I created teh new datamodel and implemented it in to the API.
 So now de project has actual data to work with.
 
 <img width="1280" alt="Screenshot 2023-06-21 at 18 26 33" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/9d61a1bb-8abf-4132-9b27-4ccb09985305">
-
 
 ### Chat
 For this sprint we had to redesign the chat. 
@@ -786,12 +786,15 @@ function getPathName(requestUrl) {
 A few sprint back we got the feedback to add a page where you can see the details of the user.
 
 This sprint I made a mini design for it.
+
 <img width="622" alt="Screenshot 2023-06-25 at 22 52 59" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/80445970-b9b7-44f9-88c2-ff4e5701a452">
 
 Based on the feedback we got about the color palette, we adde more colors to use in our design.
+
 <img width="131" alt="Screenshot 2023-06-25 at 22 53 10" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/370a5016-036b-4561-a830-eaf92dac9699">
 
 We tested the colors with the accessibility testing tool, before we made the final decision.
+
 <img width="480" alt="Screenshot 2023-06-25 at 22 54 06" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/e00b4ccb-8e99-4e06-b01d-d29bf82b1121">
 
 ## Week 4
@@ -1164,6 +1167,7 @@ Otherwise I would crach everyones application.
 The product owner give the suggestion to add a user page detail if we had the time. I took this task up on me to design the page.
 I started with a small design in Figma. 
 I used the colors from the color palette and the font from the house style, also used the same icons as on the overview page. 
+
 <img width="639" alt="Screenshot 2023-06-25 at 22 57 25" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/2ec52751-0bed-455e-aa60-3ed727ca2c81">
 
 ```js
