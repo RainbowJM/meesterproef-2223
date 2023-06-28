@@ -1279,6 +1279,41 @@ As you can see in the images above, the suggestion has more then one theme.
 Now that I changed the code to the following, it will show all the themes that are related to the suggestion.
 
 ```js
+  let listSuggestions = [];
+  let theme = [];
+  for (const residentSuggestion of residentSuggestionData) {
+    for (const resident of residentData) {
+      if (residentSuggestion.resident_id === resident.id) {
+        if (residentSuggestion.suggestion_id === suggestionData.id) {
+          suggestionData.resident = resident;
+          listSuggestions.push(suggestionData);
+        }
+      }
+    }
+  }
+
+  for (const suggestion of listSuggestions) {
+    let relatedThemes = [];
+    for (const ts of suggestionThemeData) {
+      if (ts.suggestionId === suggestion.id) {
+        relatedThemes.push(ts);
+      }
+    }
+    for (const relatedTheme of relatedThemes) {
+      for (const t of themeData) {
+        if (t.id === relatedTheme.themaId) {
+          theme.push(t);
+        }
+      }
+    }
+  }
+```
+
+This was also done for the user detailpage.
+This one was a bit more tricky, because I had to loop through the suggestions and then loop through the themes. 
+And then push the themes to the suggestion.
+
+```js
 for (const suggestion of listSuggestions) {
     let relatedThemes = [];
     for (const ts of suggestionThemeData) {
@@ -1297,6 +1332,8 @@ for (const suggestion of listSuggestions) {
     suggestion.theme = label;
   }
 ```
+
+But as you can see in the image below, it works.
 
 <img width="1317" alt="Screenshot 2023-06-23 at 21 16 33" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/84b43b84-c0b0-4a3f-9d36-eacdf5753acd">
 
