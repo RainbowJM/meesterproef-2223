@@ -1240,7 +1240,6 @@ router.get("/user/:first_name", async (req, res) => {
 ```
 This is the router file that I created for the user detail page.
 
-
 ### Code refactor
 As team we took the time to refactor our code.
 We focus on cleaning up our code, removing all the console logs and comments that we didn't need anymore.
@@ -1435,6 +1434,8 @@ I worked with new techniques like grid, :has() selectors and css animations.
 It was for sure a challenge to work with grid, but I made it work.
 I also used the :has() selector, which is not supported by all browsers. But I used it in a way that it is not a problem if it is not supported, by adding a fall back.
 
+Check [Week 3](#week-3) and [Week 4](#week-4) for more information.
+
 ### Web App From Scratch
 For this application to get the data to display on the pages, I used the API that was made for this project. [Strandeiland API](https://yyufywjwwwmgfjmenluv.supabase.co/rest/v1/)
 
@@ -1449,6 +1450,8 @@ For the css, each page got it's own css file.
 
 I wanted to make the `script.js` smaller, but due to time this was not possible.
 
+Check [Week 1](#week-1), [Week 2](#week-2) and [Week 3](#week-3) for more information.
+
 ### Browser Technologies
 One thing we learned in browser technologies is that we need to make sure that our application works as well as possible on all kinds of devices.
 And under any conditions. 
@@ -1459,13 +1462,16 @@ Furthermore, we did a color contrast test to see if there is enough color contra
 I alsot worked a bit on feature detection, for each function I wrote I put in an `if()` statements. 
 If the feature does not exist then the code is not executed.
 
-The basic functionality of the wish summary page is to write a semantic html structure. Writing good html can make it easier for people who use screen readers to operate the page. 
+The basic functionality of the wish summary page is to write a semantic html structure. 
+Writing good html can make it easier for people who use screen readers to operate the page. 
 A progressive enhancement is formatting the HTML document with css. 
 The page becomes more beautiful and clearer for the user.
 
+Check [Week 1](#week-1), [Week 2](#week-2), [Week 3](#week-3) and [Week 4](#week-4) for more information.
+
 ### Progressive Web Apps
 We used a template engine called ejs. 
-In Progressive Web App was the first time that I worked eith the template engine ejs and it was also the first time that I worked with express.
+In Progressive Web App was the first time that I worked with the template engine ejs and it was also the first time that I worked with express.
 
 In Web App From Scratch we learned about working in modules and in Progressive Web Apps we went deeper in to it. 
 
@@ -1474,10 +1480,19 @@ I applied what we learned of service worker in this project, when I applied it w
 The offline mode is for when you don't have internet, but in our case we had internet but yet it was going to the offline page.
 I was very challenging to figure out how to fix this.
 
-.... add how I fixed it and what I learned
+The fixes was in the `fetch`, I had to add a `catch` to the `fetch` and then it worked.
 
+Also the part of client side rendering I did. 
+This was to make sure that the page is loaded faster.
+For this task I decided to try something new, in the course they one of the recommendation was to use gulp.
+This will take care of the minifying of your code and other things.
+But I did use it for the minifying of the code, during the course.
+But for this project I implemented it and also learned how to work with it.
+
+Check [Week 3](#week-3) and [Week 5](#week-5) for more information.
 
 ### Human Centred Design
+We did a briefing and debriefing where we got to know more about the client and the project.
 The idea of Human Centres Design is tha you will create a product that is based on the user goals. 
 And that you will test the product with the user each time.
 This is something that I have definitely been doing the last five weeks.
@@ -1487,8 +1502,28 @@ At the end of each iteration the team and I had a meeting with the client.
 Where we showed the prototype and the client gave feedback.
 Based on the feedback we made a new prototype for the next iteration.
 
+Check [Week 1](#week-1) and [Feedback](#feedback) for more information.
+
 ### Real Time Web
 I implemetend a real-time feature in the application. 
+The feature is that the reaction that are placed are done by `socket.io`.
+There is a socket connection where the client and server can communicate with each other.
+When a user places a reaction, the server will send the reaction to all the clients that are connected to the socket.
+
+Futhermore I made the API that we are using for this project.
+I used Supabase to create the API.
+It took more time that I expected to create the API, but I learned a lot from it.
+It was my second time making an API using Supabase.
+And this time it was a lot more complicated than the first time, more complex queries and more tables.
+
+But I defintely learned new things, I did not know that you can create bucket with Supabase.
+And that when you fetch data that supabase had its own `on` functions, that you can use to listen to changes in the database.
+Or to check equal of data.
+
+And it making on the database self was at first a complicated task, because I had to make sure that the data was correct.
+And that the data was in the right format. and had everything that was needed.
+
+Check [Week 1](#week-1), [Week 2](#week-2), [Week 3](#week-3) and [Week 4](#week-4) for more information.
 
 ---
 ## Sources
