@@ -1534,12 +1534,51 @@ For a more detailed infomation about the daily stand-ups, sprint reviews and ret
 ---
 ## General retrospective
 
+As we are at the end of the project, I can look back and say that I have learned a lot.
+From someone that only know `id` and `class` to someone who can now make a design with much more css selector.
+Not onlt that, now I can also make a design that is responsive.
+Also worked with new technologies like `express`,`socket.io` and `service worker`.
+ANd I took a deep dive in to something new `supabase` and learn how it works.
+Made a API with `supabase` and `express` and used it in the project.
+Which normally I make in a whole different way.
+
+I have learned a lot about working in a team, and how to communicate with each other.
+
+I was defintily a challenge to work with a team, because you have to make sure that everyone is on the same page.
+And is different from what I am used to, as a software developer who specializes in back-end, that to the challenge to be in a front-ender's shoes for this minor.
+
+It was a eye opener to see how much work goes in to making a good design.
+But also to see how front-enders work.
+They definitely see the developing world differently than I do.
+
+One thing that for sure I learned the hard way is to let things go.
+That not everyone has the same work ethic as I do.
+And not everyone will see it as you do.
+
+Chatgpt is a very helpful tool, but it is not perfect.
+So it does not always give the right answer.
+I hope that so of the things that I give as advice were helpful to my team members. 
+For now and for their future projects/future careers.
+
+For sure the advices that I got from them were very helps and I will forever appreciate it.
+
+But all by all I am very happy with the end result of the project. 
+And I can walk away with a good feeling. 
+And a lot of new knowledge. 
+That I how one day will be able to use in my future projects.
+
+[All my tickets](https://github.com/users/RainbowJM/projects/1/views/1?filterQuery=assignee%3ARainbowJM)
+
+[Pull requests that I merged](https://github.com/users/RainbowJM/projects/1/views/1)
 
 ---
 
 ## Course Applied
 ### CSS to the Rescue
-In this project you can defintely see that I have experimented with new CSS techniques. When I started with this minor I only new `div` and only used `id` and `class` as selector. But now I now more about the CSS selector and the possibility. This meesterproef project is defintily a good example. Check week 2 en week 4 for more information.
+In this project you can defintely see that I have experimented with new CSS techniques. When I started with this minor I only new `div` and only used `id` and `class` as selector. But now I now more about the CSS selector and the possibility. 
+
+This meesterproef project is defintily a good example. Check week 2 en week 4 for more information.
+
 I experiment with CSS.  
 I worked with new techniques like grid, :has() selectors and css animations.
 It was for sure a challenge to work with grid, but I made it work.
@@ -1554,6 +1593,7 @@ I used Supabase to retrieve data and display it on the page.
 From the database I retrieved the first name, last name, description, date and image.
 
 In terms of code structure, I worked with modules. We split our `app.js` file into a `route.js` file and `script.js` file has each functionality a separate file. 
+
 Our CSS and HTML was also done in components. 
 For the html we used a template engine called ejs. 
 Repetitive HTML code was placed in a partials file and called in the ejs file. 
@@ -1566,11 +1606,12 @@ Check [Week 1](#week-1), [Week 2](#week-2) and [Week 3](#week-3) for more inform
 ### Browser Technologies
 One thing we learned in browser technologies is that we need to make sure that our application works as well as possible on all kinds of devices.
 And under any conditions. 
+
 So the application should be accessibility for everyone. 
 So I started with testing my part, the user detail page, see if it works on all kinds of devices. 
 Furthermore, we did a color contrast test to see if there is enough color contrast between the foreground and background. 
 
-I alsot worked a bit on feature detection, for each function I wrote I put in an `if()` statements. 
+I also worked a bit on feature detection, for each function I wrote I put in an `if()` statements. 
 If the feature does not exist then the code is not executed.
 
 The basic functionality of the wish summary page is to write a semantic html structure. 
