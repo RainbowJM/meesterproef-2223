@@ -27,6 +27,10 @@
   - [Database](#database)
   - [User detail page](#user-detail-page)
   - [Code refactor](#code-refactor)
+- [Week 5](#week-5)
+  - [Code refactor](#code-refactor-1)
+  - [Testing](#testing)
+  - [LightHouse testing](#lighthouse-testing)
 - [Feedback](#feedback)
   - [Feedback week 1](#feedback-week-1)
     - [Feedback design review - 31 mei 2023](#feedback-design-review---31-mei-2023)
@@ -66,7 +70,9 @@ In the coming years, a completely new neighborhood will be created on the east s
 Ambitions are high: the neighborhood must be energy-generating, greener than the first version of IJburg, residents must be able to live pleasantly with each other and equality of opportunity must be improved.
 
 ## Duurzaam, groen en sociaal Strandeiland
-The Participatieteam wants to add a new functionality for the `hallostrandeiland.nl` website where people can submit new proposals for the new Strandeiland neighborhood. This will promote communication between future residents of Strandeiland and the project managers of the municipality of Amsterdam. The goal is to use Hallo Strandeiland to collect good ideas and proposals, improve them and get the beautiful and feasible ones realized.
+The Participatieteam wants to add a new functionality for the `hallostrandeiland.nl` website where people can submit new proposals for the new Strandeiland neighborhood. 
+This will promote communication between future residents of Strandeiland and the project managers of the municipality of Amsterdam. 
+The goal is to use Hallo Strandeiland to collect good ideas and proposals, improve them and get the beautiful and feasible ones realized.
 
 ### User stories
 The user stories are written in Dutch. The user stories are written in the following format: 
@@ -100,12 +106,16 @@ Below are the questions we asked Michel Vogler:
 - Hebben jullie het logo en beeldmateriaal, zodat wij dit kunnen gebruiken?
 
 ### The debriefing
-After the briefing we made a debriefing. We wrote down all the information we got from the briefing. We also wrote down the questions we still had. You can find the debriefing below.
+After the briefing we made a debriefing. We wrote down all the information we got from the briefing. 
+We also wrote down the questions we still had. You can find the debriefing below.
 
 [Debriefing](https://github.com/RainbowJM/strandeiland/wiki/Debriefing)
 
 ## Week 1
-The kick-off presentation of the final project for this minor was given by the teachers. We were given detailed information about the planned schedule for the next five weeks. We had briefing with the product owner. After that we made a briefing with the product owner and we started working on a the first iteration of our prototype. 
+The kick-off presentation of the final project for this minor was given by the teachers. 
+We were given detailed information about the planned schedule for the next five weeks. 
+We had briefing with the product owner. 
+After that we made a briefing with the product owner and we started working on a the first iteration of our prototype. 
 
 ### Brainstorm
 We started with a brainstorm to get a better understanding of the project. 
@@ -333,6 +343,7 @@ I started with the themes.
 For this one we had a section where both teams came together to discuss the themes that we wanted to add.
 
 We came up with the following themes:
+
 <img width="415" alt="Screenshot 2023-06-18 at 22 38 41" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/8830d2c6-e177-49c9-88f2-fc4087ad7040">
 
 <img width="372" alt="Screenshot 2023-06-14 at 18 45 51" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/a19ac15a-74aa-4e15-b330-5873c8a7e635">
@@ -1249,6 +1260,15 @@ We focus on cleaning up our code, removing all the console logs and comments tha
 Check if we stayed consistent with our naming conventions.
 and renaming some of the functions to make it more clear what they do.
 
+## Week 5
+### Code refactor
+
+### Testing
+This week I focus on testing the whole applicattion, note where there were bug or things that we could so better.
+
+
+
+### LightHouse testing
 ---
 
 ## Feedback
