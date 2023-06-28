@@ -28,6 +28,7 @@
   - [User detail page](#user-detail-page)
   - [Code refactor](#code-refactor)
 - [Week 5](#week-5)
+  - [Fetching data](#fetching-data)
   - [Code refactor](#code-refactor-1)
   - [Testing](#testing)
   - [LightHouse testing](#lighthouse-testing)
@@ -1265,6 +1266,10 @@ Check if we stayed consistent with our naming conventions.
 and renaming some of the functions to make it more clear what they do.
 
 ## Week 5
+### Fetching data
+For some final touch I fetch the theme for each suggestion and added it to the detailpage and the user detail page.
+
+
 ### Code refactor
 
 ### Testing
