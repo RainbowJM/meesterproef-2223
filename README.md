@@ -126,12 +126,15 @@ So we started where everyone designed their idea's of options of how the page sh
 After that we brainstormed together to create a first version of the design by putting all the idea's together.
 
 The overview page:
+
 <img width="365" alt="Screenshot 2023-06-16 at 16 16 42" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/36b594a5-6d57-41d2-8a71-cd0fb8300ad8">
 
 The detail page:
+
 <img width="441" alt="Screenshot 2023-06-18 at 18 23 09" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/440d7fd7-11ba-4c6b-9294-d181be533f02">
 
 The make a wish form:
+
 <img width="308" alt="Screenshot 2023-06-16 at 16 19 28" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/185fc2b7-8038-48d5-84cc-ac759047b978">
 
 ### API
