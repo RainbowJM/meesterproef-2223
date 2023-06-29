@@ -1357,6 +1357,9 @@ We immediately give everyone a task based on the bugs that we found.
 And refactor where needed to be refactored.
 At the same time fixed the bugs that we found.
 
+![64ebfc4b-0100-45cc-92e2-61ee2c94a4e7](https://github.com/RainbowJM/meesterproef-2223/assets/59873140/f734f169-97e9-4f5c-8a8d-88bde27d5d86)
+
+
 ---
 
 ## Feedback
