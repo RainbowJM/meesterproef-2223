@@ -1375,6 +1375,9 @@ So I had to find another way to minify the css and js files.
 
 That is when I decided to go back to the other tools that we learned about in Progressive Web App.
 
+<img width="651" alt="Screenshot 2023-06-29 at 09 21 42" src="https://github.com/RainbowJM/meesterproef-2223/assets/59873140/3f0fd326-f872-4cc9-8a42-6a2e1a89f1f7">
+
+
 ---
 
 ## Feedback
