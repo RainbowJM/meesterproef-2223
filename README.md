@@ -1349,7 +1349,7 @@ This is all to ensure that what we hand in is the best version of our product.
 And that it is readable for the following team that will work on this project.
 
 ### Testing
-This week I focus on testing the whole applicattion, note where there were bug or things that we could so better.
+This week I focus on testing the whole application, note where there were bug or things that we could so better.
 
 During the testing I found some bugs and things that we could do better. 
 We immediately give everyone a task based on the bugs that we found.
@@ -1359,6 +1359,21 @@ At the same time fixed the bugs that we found.
 
 ![64ebfc4b-0100-45cc-92e2-61ee2c94a4e7](https://github.com/RainbowJM/meesterproef-2223/assets/59873140/f734f169-97e9-4f5c-8a8d-88bde27d5d86)
 
+We also did lighthouse check, to test how our website was perfomaning.
+As you can see the perfomance wasnt that bad when I tested it.
+But before that it was bad, my other team members did a lot of work to improve the perfomance.
+That got us to this point.
+My task was to improve the perfomance even more. 
+To at least get a 90+ score on perfomance.
+
+So for this part I wanted to implement `gulp` to minify the css and js files.
+After implementing gulp and setting up everything, I wanted to run `gulp`.
+But then I got an error that I couldn't fix.
+Later I discovered that `gulp` doesn't work with `require`.
+And our whole project is build with `require`.
+So I had to find another way to minify the css and js files.
+
+That is when I decided to go back to the other tools that we learned about in Progressive Web App.
 
 ---
 
